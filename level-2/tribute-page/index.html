@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A tribute to Gurveer Arora and the pure HTML and CSS calculator that challenged what a stylesheet could do."
+    />
+    <meta name="theme-color" content="#10110f" />
+    <title>Gurveer Arora — The Developer Who Made CSS Calculate</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Gurveer Arora tribute home">
+        <span class="brand__mark" aria-hidden="true">{ }</span>
+        <span>Gurveer Arora</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#story">The story</a>
+        <a href="#method">The method</a>
+        <a href="#legacy">The legacy</a>
+      </nav>
+
+      <a
+        class="header-link"
+        href="https://blog.scottlogic.com/2022/01/20/noJS-making-a-calculator-in-pure-css-html.html"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Read article <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero__grid page-width">
+          <div class="hero__copy">
+            <p class="eyebrow reveal reveal--one">A tribute to creative constraint / 2022</p>
+            <h1 id="hero-title" class="hero__title">
+              <span class="reveal reveal--two">The developer</span>
+              <span class="reveal reveal--three">who made <em>CSS</em></span>
+              <span class="reveal reveal--four">calculate.</span>
+            </h1>
+            <p class="hero__lede reveal reveal--five">
+              Gurveer Arora turned a language made for presentation into the engine of a working calculator—without a single line of JavaScript.
+            </p>
+            <div class="hero__actions reveal reveal--six">
+              <a
+                class="button button--primary"
+                href="https://quarknerd.github.io/noJS/calc.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Try the original <span aria-hidden="true">↗</span></a>
+              <a
+                class="button button--text"
+                href="https://github.com/QuarkNerd/noJS"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Explore the code <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+
+          <figure class="portrait reveal reveal--portrait">
+            <div class="portrait__frame">
+              <img
+                src="assets/gurveer-arora.jpg"
+                alt="Portrait of developer Gurveer Arora"
+                width="460"
+                height="460"
+              />
+              <span class="portrait__stamp">0 KB JS</span>
+              <span class="orbit-chip orbit-chip--one" aria-hidden="true">calc()</span>
+              <span class="orbit-chip orbit-chip--two" aria-hidden="true">:checked</span>
+              <span class="orbit-chip orbit-chip--three" aria-hidden="true">--value</span>
+            </div>
+            <figcaption>
+              Gurveer Arora · Senior Developer, Scott Logic
+              <a
+                href="https://blog.scottlogic.com/garora/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Author profile ↗</a>
+            </figcaption>
+          </figure>
+        </div>
+
+        <ul class="achievement-strip page-width" aria-label="Project facts">
+          <li><strong>0</strong><span>JavaScript</span></li>
+          <li><strong>2</strong><span>Languages: HTML + CSS</span></li>
+          <li><strong>20.01.22</strong><span>Published</span></li>
+          <li><strong>7 min</strong><span>Technical article</span></li>
+        </ul>
+      </section>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span>NO JAVASCRIPT</span><i>✦</i><span>PURE CSS</span><i>✦</i><span>CREATIVE CONSTRAINT</span><i>✦</i>
+          <span>NO JAVASCRIPT</span><i>✦</i><span>PURE CSS</span><i>✦</i><span>CREATIVE CONSTRAINT</span><i>✦</i>
+        </div>
+      </div>
+
+      <section class="section story page-width" id="story" aria-labelledby="story-title">
+        <header class="section-heading">
+          <p class="section-number">01 / The challenge</p>
+          <h2 id="story-title">An impossible brief.<br />Chosen on purpose.</h2>
+          <p>
+            Most developers would reach for JavaScript. Gurveer made the absence of it the entire point—and defined the rules before writing the solution.
+          </p>
+        </header>
+
+        <div class="story__content">
+          <blockquote class="big-quote">
+            <span aria-hidden="true">“</span>
+            <p>Why not?</p>
+            <cite>— Gurveer Arora</cite>
+          </blockquote>
+
+          <ol class="rule-list">
+            <li><span>01</span><p>No JavaScript file.</p></li>
+            <li><span>02</span><p>No script tag.</p></li>
+            <li><span>03</span><p>No inline event handlers.</p></li>
+            <li><span>04</span><p>No HAML, SCSS, or other preprocessors.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section method" id="method" aria-labelledby="method-title">
+        <div class="page-width">
+          <header class="section-heading section-heading--dark">
+            <p class="section-number">02 / The method</p>
+            <h2 id="method-title">How CSS became<br />the engine.</h2>
+            <p>
+              The trick was not one secret feature. It was a chain of familiar browser tools, pushed far beyond their usual jobs.
+            </p>
+          </header>
+
+          <div class="method__layout">
+            <div class="technique-flow">
+              <article class="technique-card">
+                <span class="technique-card__number">01</span>
+                <code>&lt;input type="radio"&gt;</code>
+                <h3>State without scripts</h3>
+                <p>Hidden radio inputs remember which number or operation the user selects.</p>
+              </article>
+
+              <article class="technique-card">
+                <span class="technique-card__number">02</span>
+                <code>:checked ~ element</code>
+                <h3>Labels become controls</h3>
+                <p>Labels act like buttons while sibling selectors reveal and route each selected value.</p>
+              </article>
+
+              <article class="technique-card">
+                <span class="technique-card__number">03</span>
+                <code>--digit: 7;</code>
+                <h3>Variables carry values</h3>
+                <p>Custom properties pass selected digits through carefully nested HTML.</p>
+              </article>
+
+              <article class="technique-card">
+                <span class="technique-card__number">04</span>
+                <code>calc(a + b)</code>
+                <h3>CSS does the maths</h3>
+                <p>The calc function combines chosen numbers and operators into a real result.</p>
+              </article>
+
+              <article class="technique-card">
+                <span class="technique-card__number">05</span>
+                <code>@counter-style</code>
+                <h3>Counters print the answer</h3>
+                <p>Typed properties and custom counters handle rounding, decimals, signs, and display.</p>
+              </article>
+            </div>
+
+            <div class="machine-wrap">
+              <div class="machine" role="img" aria-label="Decorative calculator illustrating CSS plus curiosity">
+                <div class="machine__topline"><span>NOJS / 01</span><span class="machine__status">LIVE</span></div>
+                <div class="machine__screen">
+                  <span>CSS + CURIOSITY</span>
+                  <strong>= POSSIBLE</strong>
+                </div>
+                <div class="machine__keys" aria-hidden="true">
+                  <span>:checked</span><span>~</span><span>--x</span><span>÷</span>
+                  <span>calc()</span><span>7</span><span>8</span><span>×</span>
+                  <span>@property</span><span>4</span><span>5</span><span>+</span>
+                  <span>counter()</span><span>1</span><span>2</span><span class="machine__equals">=</span>
+                </div>
+                <span class="machine__pulse" aria-hidden="true"></span>
+              </div>
+              <p class="machine-caption"><span></span> A visual homage—not a copy of the original interface.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section legend page-width" id="legend" aria-labelledby="legend-title">
+        <header class="section-heading section-heading--wide">
+          <p class="section-number">03 / Legend status</p>
+          <h2 id="legend-title">Not because CSS <em>should</em> do this.<br />Because he asked if it <em>could.</em></h2>
+        </header>
+
+        <div class="reason-grid">
+          <article class="reason">
+            <span>01</span>
+            <h3>He treated limits as materials.</h3>
+            <p>The missing programming language was not a blocker. It became the design brief.</p>
+          </article>
+          <article class="reason">
+            <span>02</span>
+            <h3>He followed curiosity all the way.</h3>
+            <p>A deliberately impractical idea became a working lesson in how browsers manage state and values.</p>
+          </article>
+          <article class="reason">
+            <span>03</span>
+            <h3>He shared the path, not only the trick.</h3>
+            <p>The article explains the decisions, limitations, experiments, and complete source behind the result.</p>
+          </article>
+          <article class="reason reason--accent">
+            <span>04</span>
+            <h3>Then he kept going.</h3>
+            <p>The calculator became the opening chapter of a growing NoJS series about creative engineering.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section legacy" id="legacy" aria-labelledby="legacy-title">
+        <div class="page-width">
+          <header class="section-heading">
+            <p class="section-number">04 / The NoJS legacy</p>
+            <h2 id="legacy-title">One strange idea.<br />Three bold experiments.</h2>
+          </header>
+
+          <div class="timeline">
+            <article class="timeline__item">
+              <time datetime="2022-01-20">2022</time>
+              <div>
+                <p class="timeline__type">NoJS / 01</p>
+                <h3>Calculator</h3>
+                <p>Arithmetic, decimals, signs, and display logic powered by HTML and CSS.</p>
+                <a
+                  href="https://blog.scottlogic.com/2022/01/20/noJS-making-a-calculator-in-pure-css-html.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Read the article ↗</a>
+              </div>
+            </article>
+
+            <article class="timeline__item">
+              <time datetime="2024-05-17">2024</time>
+              <div>
+                <p class="timeline__type">NoJS / 02</p>
+                <h3>Tic-tac-toe</h3>
+                <p>A playable game with a CSS-driven computer player designed to feel random.</p>
+                <a
+                  href="https://blog.scottlogic.com/2024/05/17/noJS-2-stochastic-boogaloo.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Read the article ↗</a>
+              </div>
+            </article>
+
+            <article class="timeline__item">
+              <time datetime="2026-03-09">2026</time>
+              <div>
+                <p class="timeline__type">NoJS / 03</p>
+                <h3>Flappy Bird</h3>
+                <p>A browser-game clone created with pure HTML and CSS, again without JavaScript.</p>
+                <a
+                  href="https://blog.scottlogic.com/2026/03/09/noJS-3-flappy-bird.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Read the article ↗</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing" aria-labelledby="closing-title">
+        <div class="closing__orbit" aria-hidden="true"><span>HTML</span><span>CSS</span><span>?</span></div>
+        <div class="closing__content page-width">
+          <p class="eyebrow">The final calculation</p>
+          <h2 id="closing-title"><span>No JavaScript.</span><br />Pure imagination.</h2>
+          <p>
+            Gurveer’s calculator is a reminder that technical mastery is not only knowing the intended path—it is being curious enough to explore the impossible one.
+          </p>
+          <a
+            class="button button--dark"
+            href="https://quarknerd.github.io/noJS/calc.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Experience the original <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-width site-footer__grid">
+        <div>
+          <p class="site-footer__title">Gurveer Arora / A tribute</p>
+          <p>An unofficial, non-commercial web development project celebrating creative engineering.</p>
+        </div>
+        <div>
+          <p class="site-footer__label">Primary sources</p>
+          <ul>
+            <li><a href="https://blog.scottlogic.com/2022/01/20/noJS-making-a-calculator-in-pure-css-html.html" target="_blank" rel="noopener noreferrer">Original article ↗</a></li>
+            <li><a href="https://github.com/QuarkNerd/noJS" target="_blank" rel="noopener noreferrer">Source repository ↗</a></li>
+            <li><a href="https://quarknerd.github.io/noJS/calc.html" target="_blank" rel="noopener noreferrer">Live calculator ↗</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__credit">
+          <p class="site-footer__label">Image credit</p>
+          <p>
+            Portrait of Gurveer Arora from his verified
+            <a href="https://github.com/QuarkNerd" target="_blank" rel="noopener noreferrer">QuarkNerd profile ↗</a>.
+            Article source: Gurveer Arora / Scott Logic,
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0 ↗</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
