@@ -293,6 +293,7 @@ a:focus-visible {
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
+  white-space: nowrap;
   background: var(--ink);
   border: 1px solid var(--lime);
   border-radius: 50%;
@@ -1065,13 +1066,11 @@ a:focus-visible {
 @keyframes portrait-in {
   from {
     opacity: 0;
-    clip-path: inset(0 100% 0 0);
-    transform: translateX(2rem);
+    transform: translateX(2rem) scale(0.97);
   }
   to {
     opacity: 1;
-    clip-path: inset(0);
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
 }
 
