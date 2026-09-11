@@ -415,6 +415,14 @@ a:focus-visible {
   animation: ticker-scroll 24s linear infinite;
 }
 
+.ticker__group {
+  display: flex;
+  min-width: 100vw;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .ticker__track span {
   padding-inline: 1.5rem;
   font-size: 0.76rem;
