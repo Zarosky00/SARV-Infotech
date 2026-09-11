@@ -12,7 +12,6 @@ The calculator is a beginner-friendly project built with semantic HTML, responsi
 - Decimal calculations and negative results
 - Clear (`AC`), delete (`DEL`), and equals controls
 - Division-by-zero protection and input length protection
-- Keyboard support for faster input
 - Responsive layout for desktop and mobile screens
 
 ### Technologies

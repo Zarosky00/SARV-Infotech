@@ -1,62 +1,45 @@
 const display = document.querySelector("#display");
-const numberButtons = document.querySelectorAll("[data-number]");
-const operatorButtons = document.querySelectorAll("[data-operator]");
-const actionButtons = document.querySelectorAll("[data-action]");
+const buttons = document.querySelectorAll("button");
 
-const MAX_INPUT_DIGITS = 12;
-let currentValue = "0";
-let previousValue = null;
-let selectedOperator = null;
-let shouldResetDisplay = false;
-let hasError = false;
+const MAX_DIGITS = 12;
+let firstNumber = "";
+let operator = "";
+let resetDisplay = false;
 
-function updateDisplay() {
-  display.textContent = currentValue;
+function clearCalculator() {
+  firstNumber = "";
+  operator = "";
+  resetDisplay = false;
+  display.textContent = "0";
 }
 
-function resetAfterError() {
-  if (hasError) {
-    currentValue = "0";
-    hasError = false;
-    shouldResetDisplay = false;
+function addNumber(number) {
+  if (display.textContent === "Error") {
+    clearCalculator();
+  }
+
+  const digitCount = display.textContent.replace("-", "").replace(".", "").length;
+  if (resetDisplay || display.textContent === "0") {
+    display.textContent = number;
+    resetDisplay = false;
+  } else if (digitCount < MAX_DIGITS) {
+    display.textContent += number;
   }
 }
 
-function appendNumber(number) {
-  resetAfterError();
-
-  if (shouldResetDisplay) {
-    currentValue = "0";
-    shouldResetDisplay = false;
+function addDecimal() {
+  if (display.textContent === "Error") {
+    clearCalculator();
   }
 
-  const digitCount = currentValue.replace("-", "").replace(".", "").length;
-  if (digitCount >= MAX_INPUT_DIGITS) {
-    return;
+  if (resetDisplay) {
+    display.textContent = "0";
+    resetDisplay = false;
   }
 
-  if (currentValue === "0") {
-    currentValue = number;
-  } else {
-    currentValue += number;
+  if (!display.textContent.includes(".")) {
+    display.textContent += ".";
   }
-
-  updateDisplay();
-}
-
-function appendDecimal() {
-  resetAfterError();
-
-  if (shouldResetDisplay) {
-    currentValue = "0";
-    shouldResetDisplay = false;
-  }
-
-  if (!currentValue.includes(".")) {
-    currentValue += ".";
-  }
-
-  updateDisplay();
 }
 
 function formatResult(result) {
@@ -64,124 +47,84 @@ function formatResult(result) {
   return Object.is(roundedResult, -0) ? "0" : String(roundedResult);
 }
 
-function showError(message) {
-  currentValue = message;
-  previousValue = null;
-  selectedOperator = null;
-  shouldResetDisplay = true;
-  hasError = true;
-  updateDisplay();
-}
-
 function calculate() {
-  if (previousValue === null || selectedOperator === null) {
+  if (firstNumber === "" || operator === "") {
     return;
   }
 
-  const previousNumber = Number(previousValue);
-  const currentNumber = Number(currentValue);
+  const first = Number(firstNumber);
+  const second = Number(display.textContent);
   let result;
 
-  if (selectedOperator === "+") {
-    result = previousNumber + currentNumber;
-  } else if (selectedOperator === "-") {
-    result = previousNumber - currentNumber;
-  } else if (selectedOperator === "×") {
-    result = previousNumber * currentNumber;
-  } else if (selectedOperator === "÷") {
-    if (currentNumber === 0) {
-      showError("Cannot divide by 0");
+  if (operator === "+") {
+    result = first + second;
+  } else if (operator === "-") {
+    result = first - second;
+  } else if (operator === "×") {
+    result = first * second;
+  } else if (operator === "÷") {
+    if (second === 0) {
+      display.textContent = "Error";
+      firstNumber = "";
+      operator = "";
+      resetDisplay = true;
       return;
     }
-    result = previousNumber / currentNumber;
+    result = first / second;
   }
 
-  currentValue = formatResult(result);
-  previousValue = null;
-  selectedOperator = null;
-  shouldResetDisplay = true;
-  updateDisplay();
+  display.textContent = formatResult(result);
+  firstNumber = "";
+  operator = "";
+  resetDisplay = true;
 }
 
-function chooseOperator(operator) {
-  resetAfterError();
+function chooseOperator(nextOperator) {
+  if (display.textContent === "Error") {
+    clearCalculator();
+  }
 
-  if (selectedOperator !== null && previousValue !== null && !shouldResetDisplay) {
+  if (operator !== "" && !resetDisplay) {
     calculate();
   }
 
-  previousValue = currentValue;
-  selectedOperator = operator;
-  shouldResetDisplay = true;
-}
-
-function clearCalculator() {
-  currentValue = "0";
-  previousValue = null;
-  selectedOperator = null;
-  shouldResetDisplay = false;
-  hasError = false;
-  updateDisplay();
+  firstNumber = display.textContent;
+  operator = nextOperator;
+  resetDisplay = true;
 }
 
 function deleteLastDigit() {
-  resetAfterError();
-
-  if (shouldResetDisplay) {
-    currentValue = "0";
-    shouldResetDisplay = false;
-  } else {
-    currentValue = currentValue.slice(0, -1);
-    if (currentValue === "" || currentValue === "-") {
-      currentValue = "0";
-    }
+  if (display.textContent === "Error") {
+    clearCalculator();
+    return;
   }
 
-  updateDisplay();
+  if (resetDisplay) {
+    display.textContent = "0";
+    resetDisplay = false;
+    return;
+  }
+
+  display.textContent = display.textContent.slice(0, -1);
+  if (display.textContent === "" || display.textContent === "-") {
+    display.textContent = "0";
+  }
 }
 
-numberButtons.forEach((button) => {
-  button.addEventListener("click", () => appendNumber(button.dataset.number));
-});
-
-operatorButtons.forEach((button) => {
-  button.addEventListener("click", () => chooseOperator(button.dataset.operator));
-});
-
-actionButtons.forEach((button) => {
+buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (button.dataset.action === "clear") {
+    if (button.dataset.number !== undefined) {
+      addNumber(button.dataset.number);
+    } else if (button.dataset.operator !== undefined) {
+      chooseOperator(button.dataset.operator);
+    } else if (button.dataset.action === "clear") {
       clearCalculator();
     } else if (button.dataset.action === "delete") {
       deleteLastDigit();
     } else if (button.dataset.action === "decimal") {
-      appendDecimal();
+      addDecimal();
     } else if (button.dataset.action === "calculate") {
       calculate();
     }
   });
 });
-
-document.addEventListener("keydown", (event) => {
-  if (/^\d$/.test(event.key)) {
-    appendNumber(event.key);
-  } else if (event.key === ".") {
-    appendDecimal();
-  } else if (["+", "-"].includes(event.key)) {
-    chooseOperator(event.key);
-  } else if (event.key === "*") {
-    chooseOperator("×");
-  } else if (event.key === "/") {
-    event.preventDefault();
-    chooseOperator("÷");
-  } else if (event.key === "Enter" || event.key === "=") {
-    event.preventDefault();
-    calculate();
-  } else if (event.key === "Backspace") {
-    deleteLastDigit();
-  } else if (event.key === "Escape") {
-    clearCalculator();
-  }
-});
-
-updateDisplay();
