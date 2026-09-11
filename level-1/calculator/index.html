@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101827" />
+    <title>SARV Infotech | Simple Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="calculator-card" aria-labelledby="calculator-title">
+        <header class="calculator-header">
+          <div class="brand-mark" aria-hidden="true">SI</div>
+          <div>
+            <p class="eyebrow">SARV INFOTECH</p>
+            <h1 id="calculator-title">Simple Calculator</h1>
+            <p class="subtitle">Level 1 · Web Development Internship</p>
+          </div>
+        </header>
+
+        <div class="calculator-screen" aria-live="polite">
+          <span class="screen-label">Result</span>
+          <output id="display" class="display" aria-label="Calculator display">0</output>
+        </div>
+
+        <div class="calculator-keypad" aria-label="Calculator keys">
+          <button class="key key-secondary" type="button" data-action="clear">AC</button>
+          <button class="key key-secondary" type="button" data-action="delete" aria-label="Delete last digit">DEL</button>
+          <button class="key key-operator" type="button" data-operator="÷" aria-label="Divide">÷</button>
+          <button class="key key-operator" type="button" data-operator="×" aria-label="Multiply">×</button>
+
+          <button class="key" type="button" data-number="7">7</button>
+          <button class="key" type="button" data-number="8">8</button>
+          <button class="key" type="button" data-number="9">9</button>
+          <button class="key key-operator" type="button" data-operator="-" aria-label="Subtract">−</button>
+
+          <button class="key" type="button" data-number="4">4</button>
+          <button class="key" type="button" data-number="5">5</button>
+          <button class="key" type="button" data-number="6">6</button>
+          <button class="key key-operator" type="button" data-operator="+" aria-label="Add">+</button>
+
+          <button class="key" type="button" data-number="1">1</button>
+          <button class="key" type="button" data-number="2">2</button>
+          <button class="key" type="button" data-number="3">3</button>
+          <button class="key key-equals" type="button" data-action="calculate">=</button>
+
+          <button class="key key-zero" type="button" data-number="0">0</button>
+          <button class="key" type="button" data-action="decimal" aria-label="Decimal point">.</button>
+        </div>
+
+        <p class="keyboard-hint">Tip: you can also use your keyboard.</p>
+      </section>
+
+      <footer class="page-footer">
+        <p>Built with HTML, CSS and JavaScript for SARV Infotech.</p>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
