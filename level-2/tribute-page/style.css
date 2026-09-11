@@ -927,7 +927,7 @@ a:focus-visible {
 
 .closing__orbit {
   position: absolute;
-  width: min(72vw, 54rem);
+  width: min(72vw, calc(90svh - 6rem), 54rem);
   aspect-ratio: 1;
   border: 1px solid rgba(16, 17, 15, 0.35);
   border-radius: 50%;
@@ -1314,7 +1314,7 @@ a:focus-visible {
   }
 
   .closing__orbit {
-    width: 120vw;
+    width: min(120vw, calc(90svh - 5rem));
   }
 
   .site-footer__grid {
