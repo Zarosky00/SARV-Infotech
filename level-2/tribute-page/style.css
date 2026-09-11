@@ -284,6 +284,7 @@ a:focus-visible {
   position: absolute;
   right: -1.1rem;
   bottom: 1.5rem;
+  z-index: 3;
   display: grid;
   place-items: center;
   width: 5.6rem;
@@ -295,9 +296,23 @@ a:focus-visible {
   letter-spacing: 0.08em;
   white-space: nowrap;
   background: var(--ink);
-  border: 1px solid var(--lime);
+  border: 2px solid var(--lime);
   border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 0.35rem var(--ink),
+    inset 0 0 0 calc(0.35rem + 1px) var(--lime),
+    0.45rem 0.45rem 0 var(--lime),
+    0.75rem 0.75rem 0 rgba(0, 0, 0, 0.72);
+  text-shadow: 2px 2px 0 #000;
   transform: rotate(8deg);
+}
+
+.portrait__stamp::before {
+  position: absolute;
+  inset: 0.7rem;
+  content: "";
+  border: 1px dashed rgba(244, 241, 232, 0.5);
+  border-radius: 50%;
 }
 
 .orbit-chip {
@@ -947,21 +962,24 @@ a:focus-visible {
   background: var(--lime);
   border: 1px solid var(--ink);
   border-radius: 50%;
+  box-shadow: 0.25rem 0.25rem 0 rgba(16, 17, 15, 0.2);
+  transform: translate(-50%, -50%);
+  animation: counter-spin 26s linear infinite;
 }
 
 .closing__orbit span:nth-child(1) {
-  top: -2rem;
-  left: calc(50% - 2rem);
+  top: 2%;
+  left: 36%;
 }
 
 .closing__orbit span:nth-child(2) {
-  right: -2rem;
-  bottom: 22%;
+  top: 50%;
+  left: 88%;
 }
 
 .closing__orbit span:nth-child(3) {
-  bottom: 12%;
-  left: -2rem;
+  top: 67.68%;
+  left: 32.32%;
 }
 
 .site-footer {
@@ -1109,6 +1127,12 @@ a:focus-visible {
 @keyframes slow-spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes counter-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
   }
 }
 
