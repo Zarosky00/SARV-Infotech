@@ -1,18 +1,18 @@
 :root {
-  color-scheme: dark;
-  --page: #0b1220;
-  --card: #111b2d;
-  --screen: #0a1220;
-  --key: #1c2a40;
-  --key-hover: #263953;
-  --secondary: #2a3d57;
-  --operator: #1d8f86;
-  --operator-hover: #25aa9e;
-  --equals: #f2a93b;
-  --equals-hover: #ffc15c;
-  --text: #f3f7fb;
-  --muted: #9aabc0;
-  --border: rgba(255, 255, 255, 0.09);
+  color-scheme: light;
+  --page: #f2f2f2;
+  --card: #ffffff;
+  --screen: #fafafa;
+  --key: #e6e6e6;
+  --key-hover: #d8d8d8;
+  --secondary: #d0d0d0;
+  --operator: #b9c7d5;
+  --operator-hover: #aabaca;
+  --equals: #7899ba;
+  --equals-hover: #688cae;
+  --text: #222222;
+  --muted: #707070;
+  --border: #d8d8d8;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -25,10 +25,7 @@ body {
   min-height: 100vh;
   margin: 0;
   color: var(--text);
-  background:
-    radial-gradient(circle at 20% 0%, rgba(29, 143, 134, 0.16), transparent 35%),
-    radial-gradient(circle at 100% 100%, rgba(242, 169, 59, 0.12), transparent 35%),
-    var(--page);
+  background: var(--page);
 }
 
 button {
@@ -45,10 +42,10 @@ button {
 .calculator-card {
   width: min(100%, 420px);
   padding: clamp(1.25rem, 4vw, 2rem);
-  background: linear-gradient(145deg, rgba(25, 39, 62, 0.98), rgba(12, 21, 36, 0.98));
+  background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 1.5rem;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .calculator-header {
@@ -75,7 +72,7 @@ h1 {
   text-align: right;
   background: var(--screen);
   border: 1px solid var(--border);
-  border-radius: 1rem;
+  border-radius: 0.6rem;
 }
 
 .screen-label {
@@ -110,14 +107,13 @@ h1 {
   color: var(--text);
   cursor: pointer;
   background: var(--key);
-  border: 1px solid transparent;
-  border-radius: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
   transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
 }
 
 .key:hover {
   background: var(--key-hover);
-  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .key:active {
@@ -125,16 +121,17 @@ h1 {
 }
 
 .key:focus-visible {
-  outline: 3px solid rgba(57, 200, 183, 0.55);
+  outline: 3px solid rgba(120, 153, 186, 0.55);
   outline-offset: 2px;
 }
 
 .key-secondary {
-  color: #c6d4e3;
+  color: var(--text);
   background: var(--secondary);
 }
 
 .key-operator {
+  color: #1f2c39;
   background: var(--operator);
 }
 
@@ -144,7 +141,7 @@ h1 {
 
 .key-equals {
   grid-row: span 2;
-  color: #211507;
+  color: #ffffff;
   font-size: 1.5rem;
   font-weight: 800;
   background: var(--equals);
